@@ -1,0 +1,140 @@
+# Environment Variables (Security)
+.env
+.env.local
+.env.production
+.env.staging
+*.env
+
+# API Keys and Secrets
+**/secrets/
+**/.secrets/
+**/api_keys/
+
+# Dependencies
+node_modules/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.venv/
+pip-log.txt
+pip-delete-this-directory.txt
+.tox/
+.coverage
+.pytest_cache/
+
+# IDE and Editor Files
+.vscode/settings.json
+.vscode/launch.json
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Build and Distribution
+build/
+dist/
+*.egg-info/
+.next/
+out/
+.nuxt/
+.cache/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.log.*
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Docker
+.dockerignore
+docker-compose.override.yml
+
+# OS Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Temporary Files
+tmp/
+temp/
+*.tmp
+*.temp
+
+# Runtime Data
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage Reports
+htmlcov/
+.coverage
+.coverage.*
+coverage.xml
+*.cover
+.hypothesis/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Backup Files
+*.bak
+*.backup
+*.old
+*.orig
+
+# Compiled Files
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+# Archives
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# Package Files
+*.egg
+*.pkg
+*.deb
+*.rpm
+
+# Keep Important Configuration Files
+!.env.example
+!docker-compose.yml
+!Dockerfile*
+!*.md
+!*.json
+!*.yml
+!*.yaml
+
+# Keep Documentation
+!docs/
+!README*
+!LICENSE*
+!CHANGELOG*
