@@ -1,0 +1,47 @@
+{
+  "project_name": "SocialSeed v2.0",
+  "description": "Enterprise Social Media Orchestration Platform with AI-powered automation and human oversight",
+  "user_flows": [
+    {
+      "id": "account_setup",
+      "name": "Social Media Account Setup",
+      "description": "User adds and configures social media accounts for automation",
+      "steps": [
+        "User clicks 'Add New Account' button",
+        "User selects platform (TikTok/Instagram/Twitter)",
+        "For TikTok: SimpleTikTokLogin modal opens immediately",
+        "User enters credentials and authenticates",
+        "Account is added to dashboard",
+        "User can manage account settings"
+      ]
+    },
+    {
+      "id": "dashboard_management",
+      "name": "Dashboard Management",
+      "description": "User monitors and manages their social media automation",
+      "steps": [
+        "User views dashboard with account stats",
+        "User reviews recent actions and analytics",
+        "User adjusts automation settings",
+        "User approves/rejects pending actions",
+        "User monitors platform health status"
+      ]
+    }
+  ],
+  "key_features": [
+    "Multi-platform social media automation (TikTok, Instagram, Twitter)",
+    "AI-powered decision making with human oversight",
+    "Phased safety deployment system",
+    "Real-time analytics and monitoring",
+    "Account health tracking",
+    "Behavioral simulation to avoid detection"
+  ],
+  "technical_requirements": {
+    "frontend": "React/Next.js with TypeScript",
+    "backend": "FastAPI with Python",
+    "database": "PostgreSQL via Supabase",
+    "deployment": "Docker containers",
+    "authentication": "OAuth + web scraping fallback"
+  }
+}
+

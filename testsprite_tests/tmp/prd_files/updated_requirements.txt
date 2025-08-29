@@ -11,7 +11,6 @@ asyncpg>=0.29.0
 databases[postgresql]>=0.8.0
 sqlalchemy>=2.0.23
 alembic>=1.13.1
-supabase>=2.0.0
 
 # Redis for Caching
 redis>=5.0.1

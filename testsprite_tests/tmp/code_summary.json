@@ -1,0 +1,123 @@
+{
+  "tech_stack": [
+    "Python",
+    "FastAPI", 
+    "TypeScript",
+    "React",
+    "Next.js",
+    "PostgreSQL",
+    "Supabase",
+    "Redis",
+    "Docker",
+    "TailwindCSS",
+    "Jest",
+    "Playwright",
+    "OpenAI API",
+    "DeepSeek API",
+    "Groq API",
+    "Anthropic API"
+  ],
+  "features": [
+    {
+      "name": "Dashboard Component",
+      "description": "Main React dashboard for managing social media accounts, viewing analytics, and controlling automation settings",
+      "files": ["frontend/components/Dashboard.tsx"]
+    },
+    {
+      "name": "TikTok Simple Login",
+      "description": "Simplified TikTok authentication component using username/password instead of OAuth",
+      "files": ["frontend/components/SimpleTikTokLogin.tsx"]
+    },
+    {
+      "name": "Supabase Integration",
+      "description": "Database client setup and connection management for PostgreSQL via Supabase",
+      "files": ["frontend/lib/supabase.ts"]
+    },
+    {
+      "name": "FastAPI Main Application",
+      "description": "Core backend API with social media orchestration, phase management, and safety systems",
+      "files": ["backend/main.py"]
+    },
+    {
+      "name": "Database Management",
+      "description": "PostgreSQL database operations, schema management, and data access layer",
+      "files": ["backend/database.py", "backend/schema.sql"]
+    },
+    {
+      "name": "TikTok Service",
+      "description": "TikTok API integration and automation service with OAuth and scraping capabilities",
+      "files": ["backend/tiktok_service.py", "backend/tiktok_scraper.py"]
+    },
+    {
+      "name": "Instagram Service", 
+      "description": "Instagram API integration and automation capabilities",
+      "files": ["backend/instagram_service.py"]
+    },
+    {
+      "name": "Twitter Service",
+      "description": "Twitter/X API integration and automation features",
+      "files": ["backend/twitter_service.py"]
+    },
+    {
+      "name": "AI Service Provider",
+      "description": "Multi-provider AI service with fallbacks (DeepSeek, Groq, Anthropic, OpenAI)",
+      "files": ["backend/ai_service.py"]
+    },
+    {
+      "name": "Phase Manager",
+      "description": "Phased deployment system for safe social media automation rollout",
+      "files": ["backend/phase_manager.py"]
+    },
+    {
+      "name": "Behavioral Service",
+      "description": "Human behavior simulation to avoid platform detection",
+      "files": ["backend/behavioral_service.py"]
+    },
+    {
+      "name": "Authenticity Analyzer",
+      "description": "Account authenticity analysis and targeting system",
+      "files": ["backend/authenticity_analyzer.py"]
+    },
+    {
+      "name": "Proxy Service",
+      "description": "Proxy rotation and IP management for stealth operations",
+      "files": ["backend/proxy_service.py"]
+    },
+    {
+      "name": "Frontend Testing Suite",
+      "description": "Jest and React Testing Library setup for component testing",
+      "files": ["frontend/__tests__/Dashboard.test.tsx", "frontend/jest.config.js", "frontend/jest.setup.js"]
+    },
+    {
+      "name": "Backend Testing Suite", 
+      "description": "Pytest setup for API endpoint and database testing",
+      "files": ["backend/tests/test_api_endpoints.py", "backend/tests/test_database.py", "backend/tests/conftest.py"]
+    },
+    {
+      "name": "Docker Infrastructure",
+      "description": "Multi-service Docker setup with frontend, backend, database, and Redis",
+      "files": ["docker-compose.yml", "frontend/Dockerfile.frontend", "backend/Dockerfile.backend"]
+    },
+    {
+      "name": "TikTok OAuth Callback",
+      "description": "OAuth callback handler for TikTok authentication flow",
+      "files": ["frontend/pages/tiktok-callback.tsx"]
+    },
+    {
+      "name": "Database Schema",
+      "description": "Complete database schema with tables for users, accounts, actions, and historical tracking", 
+      "files": ["backend/schema.sql", "complete_database_setup.sql", "historical_tracking_tables.sql"]
+    },
+    {
+      "name": "Project Documentation",
+      "description": "Comprehensive project documentation including PRD, technical architecture, and setup guides",
+      "files": ["PRD.md", "TECHNICAL_ARCHITECTURE.md", "COMPLETE_SETUP_GUIDE.md", "planning.md", "tasks.md", "MEMORY_SYSTEM.md"]
+    },
+    {
+      "name": "Deployment Scripts",
+      "description": "Automated startup and deployment scripts",
+      "files": ["start.sh"]
+    }
+  ]
+}
+

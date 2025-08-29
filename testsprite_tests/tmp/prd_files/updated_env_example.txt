@@ -1,0 +1,89 @@
+# SocialSeed v2.0 - Updated Environment Configuration
+# Complete configuration for phased social media orchestration
+
+# Database Configuration
+DATABASE_URL=postgresql://user:password@localhost:5432/socialseed_v2
+REDIS_URL=redis://localhost:6379/0
+
+# AI Service Providers (DeepSeek Primary for Budget)
+DEEPSEEK_API_KEY=your_deepseek_api_key_here
+GROQ_API_KEY=your_groq_api_key_here  
+ANTHROPIC_API_KEY=your_anthropic_api_key_here
+OPENAI_API_KEY=your_openai_api_key_here
+GOOGLE_AI_API_KEY=your_google_ai_key_here
+
+# Primary AI Provider (Cost-optimized)
+PRIMARY_AI_PROVIDER=deepseek
+AI_FALLBACK_PROVIDERS=groq,anthropic,openai,google
+
+# Platform API Keys (No proxies initially)
+TIKTOK_API_KEY=your_tiktok_api_key
+INSTAGRAM_API_KEY=your_instagram_api_key  
+TWITTER_API_KEY=your_twitter_api_key
+TWITTER_API_SECRET=your_twitter_api_secret
+
+# Proxy Configuration (Disabled initially, ready for activation)
+USE_PROXIES=false
+PROXY_PROVIDER=iproyal  # Options: iproyal, smartproxy, brightdata
+IPROYAL_USERNAME=your_iproyal_username
+IPROYAL_PASSWORD=your_iproyal_password
+PROXY_ROTATION_ENABLED=true
+
+# Phase Configuration
+PHASE_1_DURATION_DAYS=30
+PHASE_2_DURATION_DAYS=30
+PHASE_1_MAX_FOLLOWS_PER_HOUR=5
+PHASE_2_MAX_FOLLOWS_PER_HOUR=15
+PHASE_3_MAX_FOLLOWS_PER_HOUR=25
+
+# Safety Thresholds
+AUTHENTICITY_THRESHOLD_PHASE_1=0.7
+AUTHENTICITY_THRESHOLD_PHASE_2=0.5
+AUTHENTICITY_THRESHOLD_PHASE_3=0.3
+RISK_ESCALATION_YELLOW=0.4
+RISK_ESCALATION_RED=0.7
+AUTO_PAUSE_THRESHOLD=0.9
+
+# Human Approval Settings
+REQUIRE_APPROVAL_FOR_YELLOW=true
+REQUIRE_APPROVAL_FOR_RED=true
+APPROVAL_TIMEOUT_HOURS=24
+AUTO_REJECT_EXPIRED_APPROVALS=true
+
+# Behavioral Patterns
+DEFAULT_BEHAVIOR_PATTERN=conservative
+ENABLE_BEHAVIORAL_RANDOMIZATION=true
+MIN_ACTION_DELAY_SECONDS=15
+MAX_ACTION_DELAY_SECONDS=600
+
+# Platform Priorities (TikTok-first approach)
+PLATFORM_WEIGHT_TIKTOK=0.6
+PLATFORM_WEIGHT_INSTAGRAM=0.3
+PLATFORM_WEIGHT_TWITTER=0.1
+
+# Health Monitoring
+HEALTH_CHECK_INTERVAL_MINUTES=5
+RATE_LIMIT_BACKOFF_BASE_SECONDS=60
+MAX_CONSECUTIVE_ERRORS=5
+PLATFORM_HEALTH_WINDOW_HOURS=1
+
+# Security
+JWT_SECRET_KEY=your_super_secret_jwt_key_change_in_production
+SESSION_TIMEOUT_MINUTES=60
+API_RATE_LIMIT_PER_MINUTE=100
+
+# Logging and Monitoring
+LOG_LEVEL=INFO
+ENABLE_ACTION_LOGGING=true
+ENABLE_HEALTH_LOGGING=true
+ENABLE_RISK_ASSESSMENT_LOGGING=true
+
+# Background Tasks
+ENABLE_BACKGROUND_TASKS=true
+TASK_QUEUE_MAX_SIZE=1000
+CLEANUP_INTERVAL_HOURS=24
+
+# Development/Production
+ENVIRONMENT=development
+DEBUG_MODE=true
+ENABLE_CORS=true

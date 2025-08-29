@@ -1,0 +1,87 @@
+{
+  "project_name": "SocialSeed",
+  "test_type": "frontend",
+  "base_url": "http://localhost:3000",
+  "description": "Comprehensive frontend testing for SocialSeed v2.0 social media orchestration platform",
+  "test_scenarios": [
+    {
+      "id": "dashboard_load",
+      "name": "Dashboard Loading Test",
+      "description": "Verify dashboard loads correctly without infinite loading spinner",
+      "priority": "critical",
+      "steps": [
+        "Navigate to http://localhost:3000",
+        "Wait for dashboard to load",
+        "Verify main dashboard components are visible",
+        "Check for loading spinners that never disappear",
+        "Validate dashboard data displays correctly"
+      ]
+    },
+    {
+      "id": "tiktok_login_flow",
+      "name": "TikTok Login Flow Fix",
+      "description": "Fix TikTok dropdown selection to immediately open SimpleTikTokLogin modal",
+      "priority": "critical",
+      "steps": [
+        "Click 'Add New Account' button",
+        "Select 'TikTok' from platform dropdown",
+        "Verify SimpleTikTokLogin modal opens immediately",
+        "Verify no duplicate username/password fields show",
+        "Test TikTok login with valid credentials",
+        "Verify account is added to dashboard"
+      ]
+    },
+    {
+      "id": "account_creation",
+      "name": "Account Creation Flow",
+      "description": "Test complete account creation process for all platforms",
+      "priority": "high",
+      "steps": [
+        "Click 'Add New Account' button",
+        "Test Instagram account creation",
+        "Test Twitter account creation", 
+        "Verify form validation works",
+        "Check database insertion",
+        "Validate success feedback"
+      ]
+    },
+    {
+      "id": "database_integration",
+      "name": "Database Integration Test",
+      "description": "Verify frontend connects to Supabase database correctly",
+      "priority": "high",
+      "steps": [
+        "Test database connection",
+        "Verify account data loads",
+        "Test data insertion",
+        "Check error handling",
+        "Validate real-time updates"
+      ]
+    },
+    {
+      "id": "ui_responsiveness",
+      "name": "UI Responsiveness",
+      "description": "Test dashboard UI responsiveness and interactions",
+      "priority": "medium",
+      "steps": [
+        "Test dashboard on different screen sizes",
+        "Verify modal interactions",
+        "Check button states and loading indicators",
+        "Test navigation between sections",
+        "Validate form interactions"
+      ]
+    }
+  ],
+  "environment": {
+    "browser": "chrome",
+    "viewport": "1920x1080",
+    "timeout": 30000,
+    "retries": 2
+  },
+  "requirements": {
+    "login_required": true,
+    "database_setup": true,
+    "docker_services": ["frontend", "backend", "postgres", "redis"]
+  }
+}
+

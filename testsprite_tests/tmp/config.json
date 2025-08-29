@@ -1,0 +1,15 @@
+{
+  "status": "commited",
+  "type": "frontend",
+  "scope": "codebase",
+  "localEndpoint": "http://localhost:3000",
+  "executionArgs": {
+    "projectName": "SocialSeed",
+    "projectPath": "/Users/oscarromero/Downloads/Cursor Projects/SocialSeed",
+    "testIds": [],
+    "additionalInstruction": "Focus on fixing the TikTok login form duplication issue where selecting TikTok from dropdown should immediately open SimpleTikTokLogin modal instead of showing username/password fields. Also test the dashboard loading, account creation flow, and database integration.",
+    "envs": {
+      "API_KEY": ""
+    }
+  }
+}

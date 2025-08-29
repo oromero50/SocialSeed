@@ -79,7 +79,7 @@ class DatabaseManager:
         """Create a new social media account"""
         async with self.pool.acquire() as conn:
             query = """
-                INSERT INTO accounts (
+                INSERT INTO social_accounts (
                     username, platform, email, password_hash, 
                     api_key, api_secret, status, created_at
                 ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
@@ -104,7 +104,7 @@ class DatabaseManager:
     async def get_account(self, account_id: str) -> Optional[Dict[str, Any]]:
         """Get account by ID"""
         async with self.pool.acquire() as conn:
-            query = "SELECT * FROM accounts WHERE id = $1"
+            query = "SELECT * FROM social_accounts WHERE id = $1"
             row = await conn.fetchrow(query, account_id)
             
             if row:
@@ -115,7 +115,7 @@ class DatabaseManager:
         """Update account status"""
         async with self.pool.acquire() as conn:
             query = """
-                UPDATE accounts 
+                UPDATE social_accounts 
                 SET status = $2, updated_at = $3, status_reason = $4
                 WHERE id = $1
             """
@@ -357,7 +357,7 @@ class DatabaseManager:
             # Total accounts by platform
             accounts_query = """
                 SELECT platform, status, COUNT(*) as count
-                FROM accounts 
+                FROM social_accounts 
                 GROUP BY platform, status
             """
             account_rows = await conn.fetch(accounts_query)
@@ -401,7 +401,7 @@ class DatabaseManager:
                         a.status,
                         acc.username as account_username
                     FROM actions a
-                    JOIN accounts acc ON a.account_id = acc.id
+                    JOIN social_accounts acc ON a.account_id = acc.id
                     WHERE a.status = 'pending'
                     ORDER BY a.created_at DESC
                 """
@@ -410,6 +410,66 @@ class DatabaseManager:
         except Exception as e:
             logger.error(f"Error fetching pending approvals: {e}")
             return []
+    
+    async def get_user_accounts(self, user_id: str) -> List[Dict[str, Any]]:
+        """Get all accounts for a specific user"""
+        try:
+            async with self.pool.acquire() as conn:
+                query = """
+                    SELECT 
+                        id,
+                        user_id,
+                        platform,
+                        username,
+                        is_active,
+                        created_at,
+                        updated_at
+                    FROM social_accounts 
+                    WHERE user_id = $1
+                    ORDER BY created_at DESC
+                """
+                rows = await conn.fetch(query, user_id)
+                return [dict(row) for row in rows]
+        except Exception as e:
+            logger.error(f"Error fetching user accounts: {e}")
+            return []
+    
+    async def get_account_with_metrics(self, account_id: str) -> Optional[Dict[str, Any]]:
+        """Get account with calculated metrics"""
+        try:
+            async with self.pool.acquire() as conn:
+                # Get basic account data from social_accounts table
+                query = """
+                    SELECT 
+                        sa.*,
+                        COALESCE(sa.followers_count, 0) as followers_count,
+                        COALESCE(sa.following_count, 0) as following_count,
+                        COALESCE(sa.posts_count, 0) as posts_count,
+                        COALESCE(sa.engagement_rate, 0.0) as engagement_rate,
+                        COALESCE(sa.risk_score, 0.0) as risk_score,
+                        COALESCE(sa.consecutive_errors, 0) as consecutive_errors
+                    FROM social_accounts sa 
+                    WHERE sa.id = $1
+                """
+                row = await conn.fetchrow(query, account_id)
+                
+                if row:
+                    account_data = dict(row)
+                    
+                    # Add calculated health score based on available metrics
+                    health_score = 100.0
+                    if account_data.get('consecutive_errors', 0) > 0:
+                        health_score -= min(50, account_data['consecutive_errors'] * 10)
+                    if account_data.get('risk_score', 0) > 0.5:
+                        health_score -= (account_data['risk_score'] * 30)
+                    
+                    account_data['health_score'] = max(0, health_score)
+                    return account_data
+                
+                return None
+        except Exception as e:
+            logger.error(f"Error fetching account with metrics: {e}")
+            return None
     
     # Utility Methods
     async def execute_query(self, query: str, *args) -> Any:
